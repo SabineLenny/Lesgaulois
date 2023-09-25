@@ -3,11 +3,13 @@ package personnages;
 public class Romain {
 	private String nom;
 	private int force;
-	
+	private boolean estpositif() {
+		return force>0;
+	}
 	public Romain(String nom, int force) {
-		super();
 		this.nom = nom;
 		this.force = force;
+		assert estpositif();
 	}
 	public String getNom() {
 		return nom;
@@ -28,7 +30,7 @@ public class Romain {
 		
 	}
 	public static void main(String[] args) {
-		Romain julius= new Romain("Julius", 10);
+		Romain julius= new Romain("Julius", 6);
 		System.out.println(julius.prendreParole());
 		julius.parler("Ave moi !");
 		System.out.println("Premier coup !");
