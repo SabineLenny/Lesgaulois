@@ -24,8 +24,9 @@ public class Druide
 	private String prendreParole() {
 		return "Le druide " + nom + " : ";
 	}
-	
+		
 	public void preparerPotion() {
+		
 		Random rand= new Random();
 		int potion= rand.nextInt(effetPotionMin,effetPotionMax);
 		if (potion>7) {
