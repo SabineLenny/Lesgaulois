@@ -7,7 +7,7 @@ public class Romain {
 	private boolean estpositif() {
 		return force>0;
 	}
-	private Equipement[] equipements= new Equipement[NB_EQUIPEMENTS];
+	private Equipement[] equipementsduromain= new Equipement[NB_EQUIPEMENTS];
 	private int nbEquipement=0;
 	private boolean adiminue(int nvforce, int ancienneforce) {
 		
@@ -39,35 +39,45 @@ public class Romain {
 			parler("J'abandonne...");
 		}
 		assert adiminue(force,ancienneforce);
+	}
 		
-	public void sEquiper(Equipement equipement) {
+	public void sEquiper(Equipement equipementamettre) {
 		switch (nbEquipement) {
 		case 2:
 			System.out.println("Le soldat "+nom+" est déjà bien protégé !");
 			break;
 
 		case 1:
-			if (equipement.equals(equipement[0])) {
-				System.out.println("Le soldat "+nom +"possède déjà un");
+			if ((equipementamettre==equipementsduromain[0])) {
+				System.out.println("Le soldat "+nom+" possède déjà un "+equipementsduromain[0]);
+				break;
 			} else {
-
+				equipeobjet(equipementamettre);
+				break;
 			}
+		case 0:
+			equipeobjet(equipementamettre);
 			break;
+
+			
 		default:
 			break;
 		}
 		
 	}
-		
-		
+	private void equipeobjet(Equipement equipementamettre) {
+		System.out.println("Le soldat "+nom+" s'équipe avec un "+equipementamettre);
+		equipementsduromain[0]=equipementamettre;
+		nbEquipement++;
 	}
+		
+		
+	
 	public static void main(String[] args) {
-		Romain julius= new Romain("Julius", 6);
-		System.out.println(julius.prendreParole());
-		julius.parler("Ave moi !");
-		System.out.println("Premier coup !");
-		julius.recevoirCoup(9);
-		System.out.println("Deuxième coup !");
-		julius.recevoirCoup(2);
+		Romain minus= new Romain("Minus", 7);
+		minus.sEquiper(Equipement.CASQUE);
+		minus.sEquiper(Equipement.CASQUE);
+		minus.sEquiper(Equipement.BOUCLIER);
+		minus.sEquiper(Equipement.CASQUE);
 		}
 }
